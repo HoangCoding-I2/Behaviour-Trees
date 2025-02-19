@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class Node
@@ -17,6 +18,10 @@ public class Node
     public Node(string name)
     {
         Name = name;
+    }
+    public virtual Status Process()
+    {
+        return Children[CurrentChild].Process();
     }
     public void AddChild(Node node)
     {

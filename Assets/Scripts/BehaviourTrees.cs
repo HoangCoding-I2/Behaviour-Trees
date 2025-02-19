@@ -13,6 +13,10 @@ public class BehaviourTrees : Node
     {
         Name = name;
     }
+    public override Status Process()
+    {
+        return Children[CurrentChild].Process();
+    }
     public void PrintTree()
     {
         PrintNode(this, 0);
@@ -20,7 +24,7 @@ public class BehaviourTrees : Node
 
     private void PrintNode(Node node, int level)
     {
-        string indent = new string(' ', level * 2);
+        string indent = new string('-', level * 2);
         Debug.Log($"{indent}{node.Name}");
 
         foreach (var child in node.Children)
